@@ -1,0 +1,50 @@
+<form [formGroup]="farmerForm">
+  <mat-card>
+    <mat-card-content>
+
+      <div fxLayout="row" fxLayoutAlign="space-between">
+
+        <mat-form-field fxFlex="40">
+          <input matInput placeholder="Nome or Doc#" formControlName="searchInput"
+            [matAutocomplete]="searchAutoComplete">
+          <mat-icon matPrefix class="icon-search">{{'search'}}</mat-icon>
+          <mat-icon matSuffix>{{'arrow_forward'}}</mat-icon>
+
+          <mat-autocomplete #searchAutoComplete="matAutocomplete" 
+            [displayWith]="displayFarmer"
+            (optionSelected)="setFarmer($event.option.value)">
+
+            <mat-option *ngIf="isLoading" class="is-loading">
+              <mat-label>Searching...</mat-label>
+            </mat-option>
+
+            <ng-container *ngIf="!isLoading">
+              <mat-option *ngFor="let farmer of farmers" [value]="farmer">
+                {{ displayFarmer(farmer) }}
+              </mat-option>
+            </ng-container>
+
+          </mat-autocomplete>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput placeholder="Destinatário" formControlName="name">
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between">
+
+        <mat-form-field fxFlex="30">
+          <input matInput placeholder="Doc#" formControlName="documentNumber">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Endereço" formControlName="address">
+        </mat-form-field>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</form>
