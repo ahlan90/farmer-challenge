@@ -16,7 +16,7 @@ services:
         image: "node:14-slim"
         container_name: docker-nest-js
         build:
-            context: .
+            context: ./farmer-backend/
             dockerfile: Dockerfile
         user: "node"
         working_dir: /usr/src/app

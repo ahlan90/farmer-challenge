@@ -1,5 +1,7 @@
 FROM node:14-slim
 
+RUN mkdir -p /usr/src/app
+
 # Create and change to the app directory.
 WORKDIR /usr/src/app
 
@@ -22,4 +24,4 @@ RUN ls -l
 EXPOSE 3000
 
 # Run the web service on container startup.
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "start" ]
