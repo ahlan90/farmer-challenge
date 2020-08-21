@@ -17,5 +17,6 @@
 - [x] MVP Frontend
 - [ ] Link provider
 - [ ] Use database
-- [ ] Configure container
+- [ ] Configure enviroments
+- [ ] Configure containers
 - [ ] Make tests
