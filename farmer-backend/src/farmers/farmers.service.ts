@@ -69,17 +69,17 @@ export class FarmersService {
         ];
     }
 
-    async findAllFilter(search): Promise<User | undefined> {
+    async findAllFilter(search: string) {
 
         if (search === '{search}') {
             return this.farmers;
         }
 
         if (search.includes('#')) {
-            return this.farmers.filter(farmer => farmer.document.documentNumber.includes(search.replace('#','')))
+            return this.farmers.filter(farmer => farmer.document.documentNumber.includes(search.replace('#','').toLowerCase()))
         }
 
-        return this.farmers.filter(farmer => farmer.name.includes(search))
+        return this.farmers.filter(farmer => farmer.name.toLowerCase().includes(search.toLowerCase()))
 
     }
 
